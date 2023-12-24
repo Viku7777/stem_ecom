@@ -133,10 +133,12 @@ class AuthController extends GetxController {
           updateLoadingstatus();
         }).onError((error, stackTrace) {
           updateLoadingstatus();
+          print(error);
           Utils.flushBarErrorMessage(error.toString(), context);
         });
       }
     }).onError((error, stackTrace) {
+      print(error);
       updateLoadingstatus();
       Utils.flushBarErrorMessage(error.toString(), context);
     });

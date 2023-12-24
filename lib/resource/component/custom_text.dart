@@ -8,6 +8,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 Widget customText(String text, TextStyle style, {int maxline = 10000}) => Text(
       text,
+      overflow: TextOverflow.ellipsis,
       style: style,
       maxLines: maxline,
     );

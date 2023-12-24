@@ -33,6 +33,7 @@ class SplashController extends GetxController {
     var favcontroller = Get.find<FavoriteItemController>();
 
     updateloading();
+
     favcontroller.updateFavoriteItemList();
     await apis.getCategories().then((value) async {
       controller.updateCategories(value);

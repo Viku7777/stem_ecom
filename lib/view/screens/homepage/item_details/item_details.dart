@@ -4,10 +4,9 @@ import 'package:cattel_feed/Helper/colors.dart';
 import 'package:cattel_feed/Helper/nextscreen.dart';
 import 'package:cattel_feed/Helper/textstyle.dart';
 import 'package:cattel_feed/backend/dummyData.dart';
-import 'package:cattel_feed/helper/icon.dart';
 import 'package:cattel_feed/controller/addressController/pincodeController.dart';
+import 'package:cattel_feed/helper/icon.dart';
 import 'package:cattel_feed/main.dart';
-import 'package:cattel_feed/model/cart_model.dart';
 import 'package:cattel_feed/model/cart_model/cart_product_model.dart';
 import 'package:cattel_feed/model/product_model/product_model.dart';
 import 'package:cattel_feed/resource/component/appbar_component.dart';
@@ -428,23 +427,28 @@ class ItemDetailsView extends StatelessWidget {
             child: Row(
               children: [
                 // add to cart button
-                Expanded(
-                  child: InkWell(
+                Expanded(child:
+                    GetBuilder<ItemDetailsViewController>(builder: (provider) {
+                  return InkWell(
                     onTap: () {
                       var controller = Get.find<CartController>();
                       CartProductModel cart = CartProductModel(
-                          createdAt: DateTime.now().toIso8601String(),
-                          items: [
-                            Items(
-                              title: product.name,
-                              image: product.productImages!.first,
-                              itemId: product.id,
-                              price: Utils.convertStringIntoInt(product
-                                  .varients!.first.originalPrice
-                                  .toString()),
-                              qnty: 1,
-                            )
-                          ]);
+                        createdAt: DateTime.now().toIso8601String(),
+                        items: [
+                          Items(
+                            title: product.name,
+                            image: product.productImages!.first,
+                            itemId: product.id,
+                            price: Utils.convertStringIntoInt(provider
+                                .currentVarients.originalPrice
+                                .toString()),
+                            qnty: 1,
+                            discount: int.tryParse(
+                                provider.currentVarients.discount.toString()),
+                            size: provider.currentVarients.name,
+                          ),
+                        ],
+                      );
                       controller.addItem(context, cart);
                       // if (loggedInUserInfo != null) {
                       //   cartcontroller.addItemInCart(product.id);
@@ -501,8 +505,8 @@ class ItemDetailsView extends StatelessWidget {
                             )),
                       ),
                     ),
-                  ),
-                ),
+                  );
+                })),
 
                 10.w.widthBox,
                 // buy now button

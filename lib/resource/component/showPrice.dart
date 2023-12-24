@@ -10,17 +10,19 @@ import 'package:velocity_x/velocity_x.dart';
 Widget customshowPrice(String old, String newprice) => Row(
       children: [
         // old price
-        customText(
-          "₹ $old",
-          GetTextTheme.fs18_medium.copyWith(
-              decoration: TextDecoration.lineThrough,
-              color: AppColors.greylightcolor),
-        ),
-        10.w.widthBox,
+        newprice.isEmpty
+            ? const SizedBox()
+            : customText(
+                "₹ $old",
+                GetTextTheme.fs18_medium.copyWith(
+                    decoration: TextDecoration.lineThrough,
+                    color: AppColors.greylightcolor),
+              ),
+        newprice.isEmpty ? const SizedBox() : 10.w.widthBox,
 
         // current price
         customText(
-          "₹ $newprice",
+          "₹ ${newprice.isEmpty ? old : newprice}",
           GetTextTheme.fs18_bold.copyWith(color: AppColors.primaryColor),
         )
       ],
