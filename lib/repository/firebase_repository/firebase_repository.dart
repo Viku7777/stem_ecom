@@ -23,15 +23,14 @@ class FirebaseRepository {
     String uid,
   ) async {
     try {
-      var data =
-          await apis.getfirestore(CollectionRef.customersReference.doc(uid));
+      var data = await apis.getData(CollectionRef.customersReference.doc(uid));
 
       if (data.exists) {
         return UserModel.fromJson(data.data() as Map<String, dynamic>);
       } else {
         throw Exception("not found");
       }
-    } catch (e) {
+    } on FirebaseException catch (e) {
       throw Exception(e.toString());
     }
   }

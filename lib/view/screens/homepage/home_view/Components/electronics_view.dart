@@ -5,6 +5,7 @@ import 'package:cattel_feed/model/all_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class ElectronicsStoreView extends StatelessWidget {
   const ElectronicsStoreView({super.key});
@@ -29,21 +30,24 @@ class ElectronicsStoreView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                padding: const EdgeInsets.all(1.1),
-                height: Get.height * .18,
-                width: double.maxFinite,
-                decoration: BoxDecoration(
-                    color: Colors.red,
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(1.1),
+                  width: double.maxFinite,
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(8.r)),
+                      gradient: AppColors.appGradientColor),
+                  child: ClipRRect(
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(8.r)),
-                    gradient: AppColors.appGradientColor),
-                child: ClipRRect(
-                  borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(8.r)),
-                  child: Image.network(
-                    electronicStore[index].image,
-                    fit: BoxFit.cover,
+                    child: Image.network(
+                      electronicStore[index].image,
+                      errorBuilder: (context, error, stackTrace) =>
+                          const Icon(Icons.error),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
@@ -73,6 +77,7 @@ class ElectronicsStoreView extends StatelessWidget {
                   ],
                 ),
               ),
+              10.h.heightBox,
             ],
           ),
         );

@@ -15,7 +15,10 @@ class UserAddressController extends GetxController {
 
   List<AddressModel> addresses = [];
   updateAddress(List<AddressModel> newaddresses) {
+    print("addresses length is ${newaddresses.length}");
+
     addresses = newaddresses;
+    print("addresses length is ${addresses.length}");
   }
 
   updateIndex(int index) {

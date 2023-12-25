@@ -2,7 +2,6 @@
 
 import 'package:cattel_feed/Helper/colors.dart';
 import 'package:cattel_feed/Helper/textstyle.dart';
-import 'package:cattel_feed/controller/sub_categories_controller/sub_categories.dart';
 import 'package:cattel_feed/helper/icon.dart';
 import 'package:cattel_feed/main.dart';
 import 'package:cattel_feed/model/categorymodel.dart';
@@ -30,11 +29,6 @@ class SubCategoriesItemView extends StatefulWidget {
 
 class _SubCategoriesItemViewState extends State<SubCategoriesItemView> {
   Color dividerColor = Colors.grey.shade200;
-
-  var subcontroller = Get.put(SubCatController());
-
-  int? selectsubCat;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

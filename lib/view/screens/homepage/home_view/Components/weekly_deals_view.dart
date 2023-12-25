@@ -24,7 +24,7 @@ class WeeklyDealsView extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 5),
                   width: 100.w,
                   decoration: BoxDecoration(
-                    color: AppColors.redColor,
+                    color: Colors.grey.shade300,
                     borderRadius: BorderRadius.circular(10.r),
                   ),
                   child: ClipRRect(
@@ -33,6 +33,8 @@ class WeeklyDealsView extends StatelessWidget {
                       weeklyDeals[index].image,
                       fit: BoxFit.cover,
                       height: 120.h,
+                      errorBuilder: (context, error, stackTrace) =>
+                          const Icon(Icons.error),
                     ),
                   ),
                 ),

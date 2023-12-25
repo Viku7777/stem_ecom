@@ -3,8 +3,6 @@
 import 'package:cattel_feed/Helper/colors.dart';
 import 'package:cattel_feed/Helper/nextscreen.dart';
 import 'package:cattel_feed/Helper/textstyle.dart';
-import 'package:cattel_feed/controller/loading_Controller/loading_controller.dart';
-
 import 'package:cattel_feed/main.dart';
 import 'package:cattel_feed/resource/component/custom_text.dart';
 import 'package:cattel_feed/view/auth/screens/createaccountwithemail.dart';
@@ -30,7 +28,6 @@ class LoginwithEmailScreen extends StatefulWidget {
 class _LoginwithEmailScreenState extends State<LoginwithEmailScreen> {
   var emailcontroller = TextEditingController();
   var passwordcontroller = TextEditingController();
-  var controller = Get.put(LoadingController());
   var formKey = GlobalKey<FormState>();
 
   @override

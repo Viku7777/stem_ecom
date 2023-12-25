@@ -30,6 +30,8 @@ class ShowByBrandsView extends StatelessWidget {
             child: Image.network(
               showBrandData[index].image,
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) =>
+                  const Icon(Icons.error),
             ),
           ),
         );

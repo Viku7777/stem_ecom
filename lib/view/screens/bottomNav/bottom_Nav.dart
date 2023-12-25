@@ -85,7 +85,7 @@ class _BottomNavViewState extends State<BottomNavView> {
                   height: 18.h,
                   width: 18.w,
                 ),
-                title: const Text("Notifications"),
+                title: const Text("Alerts"),
                 selectedColor: AppColors.primaryColor,
               ),
               SalomonBottomBarItem(

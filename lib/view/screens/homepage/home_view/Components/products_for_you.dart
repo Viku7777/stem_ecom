@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class ProductsForYouView extends StatelessWidget {
   const ProductsForYouView({super.key});
@@ -30,19 +31,20 @@ class ProductsForYouView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                height: Get.height * .25,
-                width: 190.w,
-                decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(10.r)),
-                ),
-                child: ClipRRect(
-                  borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(10.r)),
-                  child: Image.network(
-                    ProductModelss[index].image,
-                    fit: BoxFit.cover,
+              Expanded(
+                child: Container(
+                  width: 190.w,
+                  decoration: BoxDecoration(
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(10.r)),
+                  ),
+                  child: ClipRRect(
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(10.r)),
+                    child: Image.network(
+                      ProductModelss[index].image,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
@@ -91,6 +93,7 @@ class ProductsForYouView extends StatelessWidget {
                               color: Colors.amber)),
                       onRatingUpdate: (value) {},
                     ),
+                    10.h.heightBox,
                   ],
                 ),
               )

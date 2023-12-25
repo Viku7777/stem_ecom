@@ -84,7 +84,7 @@ Widget storyView(String image, title, VoidCallback onclick) {
                   shape: BoxShape.circle, gradient: titleWidgetGradient),
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.lightGreen,
+                    color: Colors.grey.shade300,
                     image: DecorationImage(
                         image: NetworkImage(image), fit: BoxFit.cover),
                     shape: BoxShape.circle),

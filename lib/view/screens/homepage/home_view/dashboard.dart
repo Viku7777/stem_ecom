@@ -177,17 +177,11 @@ class _DashboardScreenViewState extends State<DashboardScreenView> {
             }),
             AppServices.addHeight(5),
 
-            // Discount View
-            // This Widget show discounts view on the dashboard
-            // const DiscountView(),
-            // Image.network(
-            //   banners.largeBanner.first,
-            //   height: 400,
-            //   width: 500,
-            // ),
             BannerController.largeBanner.isNotEmpty
                 ? Image.network(
                     BannerController.largeBanner.first,
+                    errorBuilder: (context, error, stackTrace) =>
+                        const Icon(Icons.error),
                   )
                 : const SizedBox(),
             AppServices.addHeight(15),
@@ -212,7 +206,11 @@ class _DashboardScreenViewState extends State<DashboardScreenView> {
 
             // pati Banner
             BannerController.smallPattBanner.isNotEmpty
-                ? Image.network(BannerController.smallPattBanner.first)
+                ? Image.network(
+                    BannerController.smallPattBanner.first,
+                    errorBuilder: (context, error, stackTrace) =>
+                        const Icon(Icons.error),
+                  )
                 : const SizedBox(),
             AppServices.addHeight(5),
 
@@ -253,6 +251,8 @@ class _DashboardScreenViewState extends State<DashboardScreenView> {
             BannerController.smallPattBanner.length >= 2
                 ? Image.network(
                     BannerController.smallPattBanner[1],
+                    errorBuilder: (context, error, stackTrace) =>
+                        const Icon(Icons.error),
                   )
                 : const SizedBox(),
 
@@ -305,6 +305,8 @@ class _DashboardScreenViewState extends State<DashboardScreenView> {
             BannerController.smallPattBanner.length > 2
                 ? Image.network(
                     BannerController.smallPattBanner[2],
+                    errorBuilder: (context, error, stackTrace) =>
+                        const Icon(Icons.error),
                   )
                 : const SizedBox(),
 
@@ -313,6 +315,8 @@ class _DashboardScreenViewState extends State<DashboardScreenView> {
             BannerController.largeBanner.length >= 2
                 ? Image.network(
                     BannerController.largeBanner.first,
+                    errorBuilder: (context, error, stackTrace) =>
+                        const Icon(Icons.error),
                   )
                 : const SizedBox(),
 

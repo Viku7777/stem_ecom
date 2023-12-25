@@ -5,7 +5,6 @@ import 'package:cattel_feed/model/all_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class OtherElectronicView extends StatelessWidget {
   const OtherElectronicView({super.key});
 
@@ -33,6 +32,8 @@ class OtherElectronicView extends StatelessWidget {
                     child: Image.network(
                       otherAccessories[index].image,
                       fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) =>
+                          const Icon(Icons.error),
                     ),
                   ),
                 ),

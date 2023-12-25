@@ -20,25 +20,28 @@ class ExploreMoreView extends StatelessWidget {
         itemCount: exploreMore.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
-            childAspectRatio: 0.58.sp,
+            childAspectRatio: 0.65.sp,
             crossAxisSpacing: 10,
             mainAxisSpacing: 10),
         itemBuilder: (context, index) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                padding: const EdgeInsets.all(1.1),
-                height: 127.h,
-                width: 127.w,
-                decoration: BoxDecoration(
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(1.1),
+                  width: 127.w,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.r),
+                      gradient: AppColors.appGradientColor),
+                  child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.r),
-                    gradient: AppColors.appGradientColor),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.r),
-                  child: Image.network(
-                    exploreMore[index].image,
-                    fit: BoxFit.cover,
+                    child: Image.network(
+                      exploreMore[index].image,
+                      errorBuilder: (context, error, stackTrace) =>
+                          const Icon(Icons.error),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),

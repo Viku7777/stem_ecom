@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cattel_feed/data/network/network_api_services.dart';
 import 'package:cattel_feed/model/user_model.dart';
 import 'package:cattel_feed/repository/banner_repository/banner_repository.dart';
 import 'package:cattel_feed/repository/firebase_repository/firebase_repository.dart';
@@ -11,6 +12,7 @@ import 'package:cattel_feed/view_model/controller/address_controller.dart';
 import 'package:cattel_feed/view_model/controller/app_data_controller.dart';
 import 'package:cattel_feed/view_model/controller/item_favorite.dart';
 import 'package:cattel_feed/view_model/controller/logged_in_user_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -47,13 +49,22 @@ class SplashController extends GetxController {
           if (data.isEmptyOrNull) {
             Get.offNamedUntil(LoginWithNumber.routes, (route) => false);
           } else {
+            UserModel user = UserModel.fromJson(jsonDecode(data!));
             var controller = Get.find<LoggedInUserController>();
             var addresscontroller = Get.find<UserAddressController>();
-            controller.updateUser(UserModel.fromJson(jsonDecode(data!)));
-            addresscontroller.updateAddress(controller.userModel!.addresses);
-            Get.offNamedUntil(BottomNavView.routes, (route) => false);
+
+            FirebaseRepository.getUserProfile(user.uid).then((v) async {
+              await SFStorage.setSFData(
+                  SFStorage.savedUser, jsonEncode(v!.toJson()));
+              controller.updateUser(v);
+              addresscontroller.updateAddress(v.addresses);
+              updateloading();
+              Get.offAll(const BottomNavView());
+            }).onError((error, stackTrace) {
+              updateloading();
+              Utils.flushBarErrorMessage(error.toString(), context);
+            });
           }
-          updateloading();
         }).onError((error, stackTrace) {
           throw Exception(error.toString());
         });

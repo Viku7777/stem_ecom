@@ -3,6 +3,7 @@ import 'package:cattel_feed/Helper/colors.dart';
 import 'package:cattel_feed/Helper/textstyle.dart';
 import 'package:cattel_feed/model/all_data.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class KidsGarmentsView extends StatelessWidget {
@@ -21,7 +22,7 @@ class KidsGarmentsView extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 5),
               width: 100.w,
               decoration: BoxDecoration(
-                color: AppColors.redColor,
+                color: Colors.grey.shade300,
                 borderRadius: BorderRadius.circular(10.r),
               ),
               child: Stack(
@@ -32,6 +33,8 @@ class KidsGarmentsView extends StatelessWidget {
                     child: Image.network(
                       kidsGarment[index].image,
                       fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) =>
+                          const Icon(Icons.error),
                       width: 100.w,
                       height: 140.h,
                     ),

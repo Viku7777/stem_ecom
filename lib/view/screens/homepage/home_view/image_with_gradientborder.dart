@@ -1,4 +1,5 @@
 import 'package:cattel_feed/Helper/colors.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,6 +15,8 @@ imageWithGradient(String url, {double height = 127, double width = 127}) =>
           borderRadius: BorderRadius.circular(20),
           child: Image.network(
             url,
+            errorBuilder: (context, error, stackTrace) =>
+                const Icon(Icons.error),
             fit: BoxFit.cover,
           )),
     );

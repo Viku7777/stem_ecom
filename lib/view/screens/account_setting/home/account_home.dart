@@ -97,6 +97,8 @@ class _AccountHomeViewState extends State<AccountHomeView> {
                           ? ClipRRect(
                               borderRadius: BorderRadius.circular(1000.sp),
                               child: Image.network(
+                                errorBuilder: (context, error, stackTrace) =>
+                                    const Icon(Icons.error),
                                 controller.userModel!.image.toString(),
                                 fit: BoxFit.cover,
                                 height: 55.sp,

@@ -54,6 +54,8 @@ class ItemDetailsView extends StatelessWidget {
         (index) => Image.network(
               product.productImages![index],
               fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) =>
+                  const Icon(Icons.error),
             ));
 
     return Scaffold(
@@ -126,20 +128,27 @@ class ItemDetailsView extends StatelessWidget {
                 ),
 
                 ///////////////// / /// price section ///////////////////
+
                 Row(
                   children: [
                     // old price
                     GetBuilder<ItemDetailsViewController>(
                       builder: (controller) {
-                        return customText(
-                          "₹ ${controller.currentVarients.originalPrice.toString()}",
-                          GetTextTheme.fs18_medium.copyWith(
-                              decoration: TextDecoration.lineThrough,
-                              color: AppColors.greylightcolor),
-                        );
+                        return controller.currentVarients.discount == "0"
+                            ? const SizedBox()
+                            : Row(
+                                children: [
+                                  customText(
+                                    "₹ ${controller.currentVarients.originalPrice.toString()}",
+                                    GetTextTheme.fs18_medium.copyWith(
+                                        decoration: TextDecoration.lineThrough,
+                                        color: AppColors.greylightcolor),
+                                  ),
+                                  10.w.widthBox,
+                                ],
+                              );
                       },
                     ),
-                    10.w.widthBox,
 
                     //  current price
                     GetBuilder<ItemDetailsViewController>(

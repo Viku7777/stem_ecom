@@ -100,8 +100,7 @@ class TitleComponent {
   static Widget taglineGradient(String title) {
     return Container(
       alignment: Alignment.center,
-      // padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      height: 45.h,
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       width: Get.width,
       decoration: BoxDecoration(gradient: AppColors.appGradientColor),
       child: Text(

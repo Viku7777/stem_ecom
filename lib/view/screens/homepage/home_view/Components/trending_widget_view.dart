@@ -30,20 +30,23 @@ class TrendingWidgetView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                padding: const EdgeInsets.all(1.1),
-                height: Get.height * .25,
-                width: Get.width * 0.45,
-                decoration: BoxDecoration(
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(1.1),
+                  width: Get.width * 0.45,
+                  decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(8.r)),
+                      gradient: AppColors.appGradientColor),
+                  child: ClipRRect(
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(8.r)),
-                    gradient: AppColors.appGradientColor),
-                child: ClipRRect(
-                  borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(8.r)),
-                  child: Image.network(
-                    trendingStore[index].image,
-                    fit: BoxFit.cover,
+                    child: Image.network(
+                      trendingStore[index].image,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) =>
+                          const Icon(Icons.error),
+                    ),
                   ),
                 ),
               ),
@@ -71,6 +74,7 @@ class TrendingWidgetView extends StatelessWidget {
                             style: GetTextTheme.fs12_medium
                                 .copyWith(color: AppColors.primaryColor),
                           ),
+                          10.h.heightBox,
                         ],
                       ),
                     )
